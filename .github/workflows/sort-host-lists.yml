@@ -1,0 +1,62 @@
+name: Sort Host Lists
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'hosts/*.txt'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'hosts/*.txt'
+  workflow_dispatch:
+
+jobs:
+  sort-host-lists:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Sort all host list files
+      run: |
+        CHANGES_MADE=false
+        
+        # Find all .txt files in the hosts directory
+        for file in hosts/*.txt; do
+          if [ -f "$file" ]; then
+            echo "Processing $file..."
+            
+            # Create a backup
+            cp "$file" "$file.bak"
+            
+            # Sort the file while preserving the format (0.0.0.0 + domain)
+            sort -k2 "$file" > "$file.sorted"
+            mv "$file.sorted" "$file"
+            
+            # Check if there are any changes
+            if ! diff -q "$file" "$file.bak" > /dev/null; then
+              echo "Changes detected in $file"
+              CHANGES_MADE=true
+            else
+              echo "No changes needed in $file - already sorted"
+            fi
+            
+            # Clean up backup
+            rm "$file.bak"
+          fi
+        done
+        
+        echo "CHANGES_MADE=$CHANGES_MADE" >> $GITHUB_ENV
+    
+    - name: Commit and push if changes were made
+      if: env.CHANGES_MADE == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add hosts/*.txt
+        git commit -m "Auto-sort host list files [skip ci]"
+        git push
