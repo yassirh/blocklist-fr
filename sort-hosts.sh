@@ -59,7 +59,7 @@ for file in "${txt_files[@]}"; do
         capitalized_basename="$(tr '[:lower:]' '[:upper:]' <<< ${basename:0:1})${basename:1}"
         
         # Generate header with current date and domain count
-        current_date=$(date "+%B %d, %Y")
+        current_date=$(date -u "+%Y-%m-%dT%H:%M:%SZ")
         
         # Create header
         cat > "$file" << EOF
