@@ -15,3 +15,4 @@
 0.0.0.0 mondial-trajets.com
 0.0.0.0 pbs-acheminement.com
 0.0.0.0 relay-clients-mondial.com
+0.0.0.0 fr-relay-choisir.com
