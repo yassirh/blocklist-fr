@@ -1,6 +1,6 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-05-31T13:54:55Z
+# Last updated: 2025-05-31T13:55:28Z
 # Total domains blocked: 9
 # Format: 0.0.0.0 domain.com
 # 
