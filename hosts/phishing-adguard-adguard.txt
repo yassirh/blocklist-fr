@@ -1,0 +1,26 @@
+! French Phishing-adguard Domains Blocklist (AdGuard Format)
+! Description: Blocklist of phishing-adguard domains targeting French users
+! Last updated: 2025-05-31T22:54:50Z
+! Total domains blocked: 17
+! Format: ||domain.com^
+! 
+! Source: https://github.com/yassirh/blocklist-fr
+! License: MIT
+
+||aidee.bz^^
+||assignations-jours.com^^
+||fr-relay-choisir.com^^
+||gestioncolis-mondialrelay.com^^
+||mes-primes-energie.net^^
+||mondial-tentative.com^^
+||mondial-trajets.com^^
+||pbs-acheminement.com^^
+||relay-clients-mondial.com^^
+! ^
+! Description: Blocklist of phishing domains targeting French users^
+! Format: ||domain.com^^
+! French Phishing Domains Blocklist (AdGuard Format)^
+! Last updated: 2025-05-31T22:54:22Z^
+! License: MIT^
+! Source: https://github.com/yassirh/blocklist-fr^
+! Total domains blocked: 9^
