@@ -55,17 +55,17 @@ jobs:
             current_date=$(date "+%B %d, %Y")
             
             # Create header
-            cat > "$file" << EOF
-# French $capitalized_basename Domains Blocklist
-# Description: Blocklist of $basename domains targeting French users
-# Last updated: $current_date
-# Total domains blocked: $domain_count
-# Format: 0.0.0.0 domain.com
-# 
-# Source: https://github.com/yassirh/blocklist-fr
-# License: MIT
-
-EOF
+            {
+              echo "# French $capitalized_basename Domains Blocklist"
+              echo "# Description: Blocklist of $basename domains targeting French users"
+              echo "# Last updated: $current_date"
+              echo "# Total domains blocked: $domain_count"
+              echo "# Format: 0.0.0.0 domain.com"
+              echo "# "
+              echo "# Source: https://github.com/yassirh/blocklist-fr"
+              echo "# License: MIT"
+              echo ""
+            } > "$file"
             
             # Add the sorted hosts
             cat "$file.hosts" >> "$file"
