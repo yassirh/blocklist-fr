@@ -1,8 +1,8 @@
-0.0.0.0 mondial-trajets.com
-0.0.0.0 relay-clients-mondial.com
-0.0.0.0 mondial-tentative.com
-0.0.0.0 mes-primes-energie.net
-0.0.0.0 gestioncolis-mondialrelay.com
-0.0.0.0 assignations-jours.com
-0.0.0.0 pbs-acheminement.com
 0.0.0.0 aidee.bz
+0.0.0.0 assignations-jours.com
+0.0.0.0 gestioncolis-mondialrelay.com
+0.0.0.0 mes-primes-energie.net
+0.0.0.0 mondial-tentative.com
+0.0.0.0 mondial-trajets.com
+0.0.0.0 pbs-acheminement.com
+0.0.0.0 relay-clients-mondial.com
