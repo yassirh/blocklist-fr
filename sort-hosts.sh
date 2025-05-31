@@ -21,19 +21,27 @@ if [ ! -d "hosts" ]; then
     exit 1
 fi
 
-# Find all .txt files in the hosts directory
+# Find all .txt files in the hosts directory (excluding AdGuard versions)
 txt_files=(hosts/*.txt)
 
-# Check if any .txt files exist
-if [ ! -e "${txt_files[0]}" ]; then
-    echo -e "${YELLOW}No .txt files found in hosts/ directory${NC}"
+# Filter out AdGuard files
+main_files=()
+for file in "${txt_files[@]}"; do
+    if [[ "$file" != *"-adguard.txt" ]] && [ -f "$file" ]; then
+        main_files+=("$file")
+    fi
+done
+
+# Check if any main .txt files exist
+if [ ${#main_files[@]} -eq 0 ]; then
+    echo -e "${YELLOW}No main .txt files found in hosts/ directory${NC}"
     exit 0
 fi
 
 changes_made=false
 
-# Process each .txt file
-for file in "${txt_files[@]}"; do
+# Process each main .txt file
+for file in "${main_files[@]}"; do
     if [ -f "$file" ]; then
         echo -e "Processing ${YELLOW}$file${NC}..."
         
@@ -77,6 +85,26 @@ EOF
         # Add the sorted hosts
         cat "$file.hosts" >> "$file"
         
+        # Generate AdGuard version
+        adguard_file="${file%.txt}-adguard.txt"
+        echo -e "   Creating AdGuard version: ${YELLOW}$adguard_file${NC}..."
+        
+        # Create AdGuard header
+        cat > "$adguard_file" << EOF
+! French $capitalized_basename Domains Blocklist (AdGuard Format)
+! Description: Blocklist of $basename domains targeting French users
+! Last updated: $current_date
+! Total domains blocked: $domain_count
+! Format: ||domain.com^
+! 
+! Source: https://github.com/yassirh/blocklist-fr
+! License: MIT
+
+EOF
+        
+        # Convert hosts format (0.0.0.0 domain.com) to AdGuard format (||domain.com^)
+        sed 's/^0\.0\.0\.0 /||/g; s/$/^/g' "$file.hosts" >> "$adguard_file"
+        
         # Clean up temporary files
         rm -f "$file.comments" "$file.hosts"
         
@@ -86,12 +114,13 @@ EOF
         grep -v "^# Last updated:" "$file.bak" > "$file.bak.compare" 2>/dev/null || touch "$file.bak.compare"
         
         if ! diff -q "$file.compare" "$file.bak.compare" > /dev/null; then
-            echo -e "   ${GREEN} Sorted successfully (meaningful changes detected)${NC}"
+            echo -e "   ${GREEN}✓ Sorted successfully (meaningful changes detected)${NC}"
             changes_made=true
         else
-            echo -e "   ${GREEN} No meaningful changes (only timestamp updated)${NC}"
+            echo -e "   ${GREEN}✓ No meaningful changes (only timestamp updated)${NC}"
             # Restore the original file since only timestamp changed
             cp "$file.bak" "$file"
+            # Keep the AdGuard file even if main file has no changes - it might be missing
         fi
         
         # Clean up comparison files and backup
@@ -100,10 +129,10 @@ EOF
 done
 
 if [ "$changes_made" = true ]; then
-    echo -e "\n${GREEN}Sorting complete! Some files were modified.${NC}"
-    echo -e "${YELLOW}Don't forget to commit your changes:${NC}"
+    echo -e "\n${GREEN}✅ Sorting complete! Some files were modified.${NC}"
+    echo -e "${YELLOW}💡 Don't forget to commit your changes:${NC}"
     echo "   git add hosts/*.txt"
-    echo "   git commit -m \"Sort host list files\""
+    echo "   git commit -m \"Sort host list files and update AdGuard versions\""
 else
-    echo -e "\n${GREEN}All files were already sorted!${NC}"
+    echo -e "\n${GREEN}✅ All files were already sorted!${NC}"
 fi

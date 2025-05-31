@@ -70,6 +70,26 @@ jobs:
             # Add the sorted hosts
             cat "$file.hosts" >> "$file"
             
+            # Generate AdGuard version
+            adguard_file="${file%.txt}-adguard.txt"
+            echo "Creating AdGuard version: $adguard_file"
+            
+            # Create AdGuard header
+            {
+              echo "! French $capitalized_basename Domains Blocklist (AdGuard Format)"
+              echo "! Description: Blocklist of $basename domains targeting French users"
+              echo "! Last updated: $current_date"
+              echo "! Total domains blocked: $domain_count"
+              echo "! Format: ||domain.com^"
+              echo "! "
+              echo "! Source: https://github.com/yassirh/blocklist-fr"
+              echo "! License: MIT"
+              echo ""
+            } > "$adguard_file"
+            
+            # Convert hosts format (0.0.0.0 domain.com) to AdGuard format (||domain.com^)
+            sed 's/^0\.0\.0\.0 /||/g; s/$/^/g' "$file.hosts" >> "$adguard_file"
+            
             # Clean up temporary files
             rm -f "$file.comments" "$file.hosts"
             
@@ -85,6 +105,8 @@ jobs:
               echo "No meaningful changes in $file (only timestamp updated)"
               # Restore the original file since only timestamp changed
               cp "$file.bak" "$file"
+              # Also remove the AdGuard file if no changes
+              rm -f "$adguard_file"
             fi
             
             # Clean up comparison files and backup
@@ -100,5 +122,5 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add hosts/*.txt
-        git commit -m "Auto-sort host list files [skip ci]"
+        git commit -m "Auto-sort host list files and update AdGuard versions [skip ci]"
         git push
