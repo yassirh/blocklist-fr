@@ -33,9 +33,25 @@ jobs:
             # Create a backup
             cp "$file" "$file.bak"
             
-            # Sort the file while preserving the format (0.0.0.0 + domain)
-            sort -k2 "$file" > "$file.sorted"
-            mv "$file.sorted" "$file"
+            # Create temporary files for comments and host entries
+            grep '^#' "$file" > "$file.comments" 2>/dev/null || touch "$file.comments"
+            grep -v '^#' "$file" | grep -v '^[[:space:]]*$' > "$file.hosts" 2>/dev/null || touch "$file.hosts"
+            
+            # Sort only the host entries (non-comment lines)
+            if [ -s "$file.hosts" ]; then
+              sort -k2 "$file.hosts" > "$file.hosts.sorted"
+              mv "$file.hosts.sorted" "$file.hosts"
+            fi
+            
+            # Reconstruct the file: comments first, then sorted hosts
+            cat "$file.comments" > "$file"
+            if [ -s "$file.comments" ] && [ -s "$file.hosts" ]; then
+              echo "" >> "$file"  # Add blank line between comments and hosts
+            fi
+            cat "$file.hosts" >> "$file"
+            
+            # Clean up temporary files
+            rm -f "$file.comments" "$file.hosts"
             
             # Check if there are any changes
             if ! diff -q "$file" "$file.bak" > /dev/null; then
