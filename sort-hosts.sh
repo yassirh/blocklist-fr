@@ -50,11 +50,31 @@ for file in "${txt_files[@]}"; do
             mv "$file.hosts.sorted" "$file.hosts"
         fi
         
-        # Reconstruct the file: comments first, then sorted hosts
-        cat "$file.comments" > "$file"
-        if [ -s "$file.comments" ] && [ -s "$file.hosts" ]; then
-            echo "" >> "$file"  # Add blank line between comments and hosts
-        fi
+        # Count the number of domains
+        domain_count=$(wc -l < "$file.hosts" | tr -d ' ')
+        
+        # Get the file basename for the header
+        basename=$(basename "$file" .txt)
+        # Capitalize first letter
+        capitalized_basename="$(tr '[:lower:]' '[:upper:]' <<< ${basename:0:1})${basename:1}"
+        
+        # Generate header with current date and domain count
+        current_date=$(date "+%B %d, %Y")
+        
+        # Create header
+        cat > "$file" << EOF
+# French $capitalized_basename Domains Blocklist
+# Description: Blocklist of $basename domains targeting French users
+# Last updated: $current_date
+# Total domains blocked: $domain_count
+# Format: 0.0.0.0 domain.com
+# 
+# Source: https://github.com/yassirh/blocklist-fr
+# License: MIT
+
+EOF
+        
+        # Add the sorted hosts
         cat "$file.hosts" >> "$file"
         
         # Clean up temporary files

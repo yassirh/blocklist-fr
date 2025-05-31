@@ -1,3 +1,12 @@
+# French Phishing Domains Blocklist
+# Description: Blocklist of phishing domains targeting French users
+# Last updated: May 31, 2025
+# Total domains blocked: 8
+# Format: 0.0.0.0 domain.com
+# 
+# Source: https://github.com/yassirh/blocklist-fr
+# License: MIT
+
 0.0.0.0 aidee.bz
 0.0.0.0 assignations-jours.com
 0.0.0.0 gestioncolis-mondialrelay.com
