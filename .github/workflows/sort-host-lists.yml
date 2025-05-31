@@ -73,16 +73,22 @@ jobs:
             # Clean up temporary files
             rm -f "$file.comments" "$file.hosts"
             
-            # Check if there are any changes
-            if ! diff -q "$file" "$file.bak" > /dev/null; then
-              echo "Changes detected in $file"
+            # Check if there are any meaningful changes (excluding timestamp)
+            # Remove the "Last updated" line from both files for comparison
+            grep -v "^# Last updated:" "$file" > "$file.compare" 2>/dev/null || touch "$file.compare"
+            grep -v "^# Last updated:" "$file.bak" > "$file.bak.compare" 2>/dev/null || touch "$file.bak.compare"
+            
+            if ! diff -q "$file.compare" "$file.bak.compare" > /dev/null; then
+              echo "Meaningful changes detected in $file"
               CHANGES_MADE=true
             else
-              echo "No changes needed in $file - already sorted"
+              echo "No meaningful changes in $file (only timestamp updated)"
+              # Restore the original file since only timestamp changed
+              cp "$file.bak" "$file"
             fi
             
-            # Clean up backup
-            rm "$file.bak"
+            # Clean up comparison files and backup
+            rm -f "$file.compare" "$file.bak.compare" "$file.bak"
           fi
         done
         

@@ -80,16 +80,22 @@ EOF
         # Clean up temporary files
         rm -f "$file.comments" "$file.hosts"
         
-        # Check if there are any changes
-        if ! diff -q "$file" "$file.bak" > /dev/null; then
-            echo -e "   ${GREEN}Sorted successfully (comments preserved)${NC}"
+        # Check if there are any meaningful changes (excluding timestamp)
+        # Remove the "Last updated" line from both files for comparison
+        grep -v "^# Last updated:" "$file" > "$file.compare" 2>/dev/null || touch "$file.compare"
+        grep -v "^# Last updated:" "$file.bak" > "$file.bak.compare" 2>/dev/null || touch "$file.bak.compare"
+        
+        if ! diff -q "$file.compare" "$file.bak.compare" > /dev/null; then
+            echo -e "   ${GREEN} Sorted successfully (meaningful changes detected)${NC}"
             changes_made=true
         else
-            echo -e "   ${GREEN}Already sorted${NC}"
+            echo -e "   ${GREEN} No meaningful changes (only timestamp updated)${NC}"
+            # Restore the original file since only timestamp changed
+            cp "$file.bak" "$file"
         fi
         
-        # Clean up backup
-        rm "$file.bak"
+        # Clean up comparison files and backup
+        rm -f "$file.compare" "$file.bak.compare" "$file.bak"
     fi
 done
 
