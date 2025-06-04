@@ -25,8 +25,14 @@ jobs:
       run: |
         CHANGES_MADE=false
         
-        # Find all .txt files in the hosts directory
+        # Find all main .txt files in the hosts directory (excluding AdGuard versions)
         for file in hosts/*.txt; do
+          # Skip AdGuard files (any file containing "-adguard")
+          if [[ "$file" == *"-adguard"* ]]; then
+            echo "Skipping AdGuard file: $file"
+            continue
+          fi
+          
           if [ -f "$file" ]; then
             echo "Processing $file..."
             
@@ -105,8 +111,7 @@ jobs:
               echo "No meaningful changes in $file (only timestamp updated)"
               # Restore the original file since only timestamp changed
               cp "$file.bak" "$file"
-              # Also remove the AdGuard file if no changes
-              rm -f "$adguard_file"
+              # Keep the AdGuard file even if main file has no changes - it might be missing
             fi
             
             # Clean up comparison files and backup

@@ -24,10 +24,10 @@ fi
 # Find all .txt files in the hosts directory (excluding AdGuard versions)
 txt_files=(hosts/*.txt)
 
-# Filter out AdGuard files
+# Filter out AdGuard files (any file containing "-adguard")
 main_files=()
 for file in "${txt_files[@]}"; do
-    if [[ "$file" != *"-adguard.txt" ]] && [ -f "$file" ]; then
+    if [[ "$file" != *"-adguard"* ]] && [ -f "$file" ]; then
         main_files+=("$file")
     fi
 done

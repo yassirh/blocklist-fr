@@ -1,6 +1,6 @@
 ! French Phishing Domains Blocklist (AdGuard Format)
 ! Description: Blocklist of phishing domains targeting French users
-! Last updated: 2025-05-31T22:54:22Z
+! Last updated: 2025-06-03T08:13:34Z
 ! Total domains blocked: 9
 ! Format: ||domain.com^
 ! 
