@@ -1,7 +1,7 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-05-31T13:55:28Z
-# Total domains blocked: 9
+# Last updated: 2025-06-09T20:49:11Z
+# Total domains blocked: 11
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
@@ -9,8 +9,10 @@
 
 0.0.0.0 aidee.bz
 0.0.0.0 assignations-jours.com
+0.0.0.0 creditagricole-espace.com
 0.0.0.0 fr-relay-choisir.com
 0.0.0.0 gestioncolis-mondialrelay.com
+0.0.0.0 livraison-pickup.com
 0.0.0.0 mes-primes-energie.net
 0.0.0.0 mondial-tentative.com
 0.0.0.0 mondial-trajets.com
