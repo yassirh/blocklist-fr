@@ -1,7 +1,7 @@
 ! French Phishing Domains Blocklist (AdGuard Format)
 ! Description: Blocklist of phishing domains targeting French users
-! Last updated: 2025-06-09T23:14:19Z
-! Total domains blocked: 11
+! Last updated: 2025-06-14T14:18:25Z
+! Total domains blocked: 12
 ! Format: ||domain.com^
 ! 
 ! Source: https://github.com/yassirh/blocklist-fr
@@ -17,4 +17,5 @@
 ||mondial-tentative.com^
 ||mondial-trajets.com^
 ||pbs-acheminement.com^
+||prio-dispatchings.com^
 ||relay-clients-mondial.com^

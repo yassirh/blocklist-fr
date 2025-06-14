@@ -1,7 +1,7 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-06-09T20:49:11Z
-# Total domains blocked: 11
+# Last updated: 2025-06-14T14:18:25Z
+# Total domains blocked: 12
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
@@ -17,4 +17,5 @@
 0.0.0.0 mondial-tentative.com
 0.0.0.0 mondial-trajets.com
 0.0.0.0 pbs-acheminement.com
+0.0.0.0 prio-dispatchings.com
 0.0.0.0 relay-clients-mondial.com
