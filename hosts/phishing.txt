@@ -1,13 +1,14 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-06-14T14:18:25Z
-# Total domains blocked: 12
+# Last updated: 2025-06-20T08:59:16Z
+# Total domains blocked: 14
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
 # License: MIT
 
 0.0.0.0 aidee.bz
+0.0.0.0 apple-store-france.com
 0.0.0.0 assignations-jours.com
 0.0.0.0 creditagricole-espace.com
 0.0.0.0 fr-relay-choisir.com
@@ -19,3 +20,4 @@
 0.0.0.0 pbs-acheminement.com
 0.0.0.0 prio-dispatchings.com
 0.0.0.0 relay-clients-mondial.com
+0.0.0.0 ulys-reglementation.com
