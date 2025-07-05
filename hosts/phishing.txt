@@ -1,7 +1,7 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-06-20T08:59:16Z
-# Total domains blocked: 14
+# Last updated: 2025-07-04T13:05:09Z
+# Total domains blocked: 25
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
@@ -10,14 +10,25 @@
 0.0.0.0 aidee.bz
 0.0.0.0 apple-store-france.com
 0.0.0.0 assignations-jours.com
+0.0.0.0 bipngo.online
+0.0.0.0 cnb-k.com
 0.0.0.0 creditagricole-espace.com
+0.0.0.0 dispatch-pbs.com
+0.0.0.0 eventicket.fr
 0.0.0.0 fr-relay-choisir.com
 0.0.0.0 gestioncolis-mondialrelay.com
 0.0.0.0 livraison-pickup.com
 0.0.0.0 mes-primes-energie.net
+0.0.0.0 mlr.dispatch-pbs.com
 0.0.0.0 mondial-tentative.com
 0.0.0.0 mondial-trajets.com
+0.0.0.0 mrl.prbs-reprog.com
 0.0.0.0 pbs-acheminement.com
+0.0.0.0 pickup-lockers.com
+0.0.0.0 prbs-reprog.com
 0.0.0.0 prio-dispatchings.com
 0.0.0.0 relay-clients-mondial.com
+0.0.0.0 tsu-q.com
+0.0.0.0 ulys-debit.com
 0.0.0.0 ulys-reglementation.com
+0.0.0.0 zqkkx.com
