@@ -1,7 +1,7 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-07-04T13:05:09Z
-# Total domains blocked: 25
+# Last updated: 2025-07-07T18:49:20Z
+# Total domains blocked: 26
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
@@ -17,6 +17,7 @@
 0.0.0.0 eventicket.fr
 0.0.0.0 fr-relay-choisir.com
 0.0.0.0 gestioncolis-mondialrelay.com
+0.0.0.0 livraison-france-info.fr
 0.0.0.0 livraison-pickup.com
 0.0.0.0 mes-primes-energie.net
 0.0.0.0 mlr.dispatch-pbs.com
