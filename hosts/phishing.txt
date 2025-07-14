@@ -1,7 +1,7 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-07-14T17:58:39Z
-# Total domains blocked: 29
+# Last updated: 2025-07-14T18:03:56Z
+# Total domains blocked: 33
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
@@ -21,6 +21,7 @@
 0.0.0.0 livraison-france-info.fr
 0.0.0.0 livraison-pickup.com
 0.0.0.0 mes-primes-energie.net
+0.0.0.0 mjodxf.shop
 0.0.0.0 mlr.dispatch-pbs.com
 0.0.0.0 mondial-tentative.com
 0.0.0.0 mondial-trajets.com
@@ -30,9 +31,12 @@
 0.0.0.0 prbs-reprog.com
 0.0.0.0 prio-dispatchings.com
 0.0.0.0 relay-clients-mondial.com
+0.0.0.0 relay-urgent.com
+0.0.0.0 service-oppositions.fr
 0.0.0.0 tsu-q.com
 0.0.0.0 ulys-debit.com
 0.0.0.0 ulys-reglementation.com
 0.0.0.0 verificate.click
+0.0.0.0 www-mondial-planifier.com
 0.0.0.0 www-relayeur-coursiers.com
 0.0.0.0 zqkkx.com
