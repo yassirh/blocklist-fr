@@ -1,7 +1,7 @@
 ! French Phishing Domains Blocklist (AdGuard Format)
 ! Description: Blocklist of phishing domains targeting French users
-! Last updated: 2025-07-07T18:49:20Z
-! Total domains blocked: 26
+! Last updated: 2025-07-14T17:58:39Z
+! Total domains blocked: 29
 ! Format: ||domain.com^
 ! 
 ! Source: https://github.com/yassirh/blocklist-fr
@@ -17,6 +17,7 @@
 ||eventicket.fr^
 ||fr-relay-choisir.com^
 ||gestioncolis-mondialrelay.com^
+||leboncoin-id.shop^
 ||livraison-france-info.fr^
 ||livraison-pickup.com^
 ||mes-primes-energie.net^
@@ -32,4 +33,6 @@
 ||tsu-q.com^
 ||ulys-debit.com^
 ||ulys-reglementation.com^
+||verificate.click^
+||www-relayeur-coursiers.com^
 ||zqkkx.com^
