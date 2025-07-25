@@ -1,7 +1,7 @@
 # French Phishing Domains Blocklist
 # Description: Blocklist of phishing domains targeting French users
-# Last updated: 2025-07-14T18:03:56Z
-# Total domains blocked: 33
+# Last updated: 2025-07-25T12:29:15Z
+# Total domains blocked: 35
 # Format: 0.0.0.0 domain.com
 # 
 # Source: https://github.com/yassirh/blocklist-fr
@@ -11,6 +11,7 @@
 0.0.0.0 apple-store-france.com
 0.0.0.0 assignations-jours.com
 0.0.0.0 bipngo.online
+0.0.0.0 choix-nouveaucreneau.com
 0.0.0.0 cnb-k.com
 0.0.0.0 creditagricole-espace.com
 0.0.0.0 dispatch-pbs.com
@@ -30,6 +31,7 @@
 0.0.0.0 pickup-lockers.com
 0.0.0.0 prbs-reprog.com
 0.0.0.0 prio-dispatchings.com
+0.0.0.0 pro.choix-nouveaucreneau.com
 0.0.0.0 relay-clients-mondial.com
 0.0.0.0 relay-urgent.com
 0.0.0.0 service-oppositions.fr

@@ -1,7 +1,7 @@
 ! French Phishing Domains Blocklist (AdGuard Format)
 ! Description: Blocklist of phishing domains targeting French users
-! Last updated: 2025-07-14T18:03:56Z
-! Total domains blocked: 33
+! Last updated: 2025-07-25T12:29:15Z
+! Total domains blocked: 35
 ! Format: ||domain.com^
 ! 
 ! Source: https://github.com/yassirh/blocklist-fr
@@ -11,6 +11,7 @@
 ||apple-store-france.com^
 ||assignations-jours.com^
 ||bipngo.online^
+||choix-nouveaucreneau.com^
 ||cnb-k.com^
 ||creditagricole-espace.com^
 ||dispatch-pbs.com^
@@ -30,6 +31,7 @@
 ||pickup-lockers.com^
 ||prbs-reprog.com^
 ||prio-dispatchings.com^
+||pro.choix-nouveaucreneau.com^
 ||relay-clients-mondial.com^
 ||relay-urgent.com^
 ||service-oppositions.fr^
